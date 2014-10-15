@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>sandbox</title>
+<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div class="container-wrap">
+    <div id="map-wrap">
+    	<form>
+    		<p><input type="text" id="time" placeholder="time"></p>
+    		<p><input type="text" id="code" placeholder="code"></p>
+    		<p><input type="text" id="lontitude" placeholder="lontitude"></p>
+    		<p><input type="text" id="latitude" placeholder="latitude"></p>
+    		<p><input type="text" id="radius" placeholder="radius"></p>
+    		<p><input type="text" id="speed" placeholder="speed"></p>
+    		<p><input type="text" id="direction" placeholder="direction"></p>
+    		<p><input type="text" id="addr" placeholder="addr"></p>
+    		<p><button>ok</button></p>
+    	</form>   	
+    </div>
+</div>
+<script src="/javascripts/jquery.js"></script>
+<script>
+$(function(){
+	$('form').submit(function(){		
+		$.get('/api', {
+			time: $('#time').val(),
+			code: $('#code').val(),
+			lontitude: $('#lontitude').val(),
+			latitude: $('#latitude').val(),
+			radius: $('#radius').val(),
+			speed: $('#speed').val(),
+			direction: $('#direction').val(),
+			addr: $('#addr').val()
+		}, function(result){
+			console.log(result);
+		});
+		return false;
+	});
+})
+</script>
+</body>
+</html>
